@@ -1,0 +1,123 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Calendar, Clock, MapPin, Heart, PartyPopper, Phone } from "lucide-react";
+import { motion } from "framer-motion";
+
+export default function Invitation() {
+  const rsvpPhone = "51993427050"; // ← reemplaza con tu número (solo dígitos)
+  const rsvpWhatsApp = `https://wa.me/${rsvpPhone}?text=Hola%20Samuel,%20confirmo%20mi%20asistencia%20para%20el%2015%20de%20noviembre%20a%20las%207%20p.m.`;
+
+  return (
+    <div className="min-h-screen w-full bg-gradient-to-br from-pink-50 via-rose-50 to-amber-50 flex items-center justify-center p-6">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-full max-w-2xl"
+      >
+        <Card className="rounded-2xl shadow-xl border-0 overflow-hidden">
+          {/* Encabezado */
+          }
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-rose-400 via-pink-400 to-amber-400 opacity-90" />
+            <div className="relative px-8 py-10 text-white">
+              <div className="flex items-center gap-3 text-white/90">
+                <PartyPopper className="w-6 h-6" />
+                <span className="uppercase tracking-widest text-sm">Celebración Especial</span>
+              </div>
+              <h1 className="mt-3 text-3xl md:text-4xl font-semibold leading-tight">
+                ¡Mi Cumpleaños & <span className="inline-flex items-center gap-2">2° Aniversario <Heart className="w-6 h-6" /></span>
+              </h1>
+              <p className="mt-2 text-white/90 max-w-prose">
+                Quiero compartir contigo una noche especial para celebrar la vida y el amor. ¡Tu presencia hará este día aún más inolvidable!
+              </p>
+            </div>
+          </div>
+
+          {/* Cuerpo */}
+          <CardContent className="p-8 md:p-10 bg-white">
+            <div className="grid grid-cols-1 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3">
+                  <Calendar className="w-5 h-5 text-rose-500 mt-1" />
+                  <div>
+                    <p className="text-sm text-gray-500">Fecha</p>
+                    <p className="font-medium">Sábado, 15 de noviembre de 2025</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-rose-500 mt-1" />
+                  <div>
+                    <p className="text-sm text-gray-500">Hora</p>
+                    <p className="font-medium">6:00 p.m.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-rose-500 mt-1" />
+                  <div>
+                    <p className="text-sm text-gray-500">Lugar</p>
+                    <p className="font-medium">Las Mingas 1348</p>
+                    <p className="text-xs text-gray-500">A espaldas de la polleria Crocante</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-rose-50 border border-rose-100 p-5">
+                <h3 className="font-semibold flex items-center gap-2">
+                  <Heart className="w-5 h-5 text-rose-500" /> Tu presencia es lo más importante</h3>
+                <p className="text-gray-600 mt-1">Dos años caminando juntos, y hoy queremos celebrarlo con quienes han llenado nuestro camino de cariño.</p>
+              </div>
+
+              {/* RSVP */}
+              <div className="rounded-xl bg-amber-50 border border-amber-100 p-5">
+                <h3 className="font-semibold flex items-center gap-2">
+                  <Phone className="w-5 h-5 text-amber-600" /> Confirmación de asistencia (RSVP)
+                </h3>
+                <p className="text-gray-700 mt-1">
+                  Por favor confirma tu asistencia antes del <span className="font-medium">jueves 13</span> para poder organizar todo con cariño. 💌
+                </p>
+                <div className="mt-3 flex flex-wrap items-center gap-3">
+                  <Button asChild className="rounded-xl">
+                    <a href={rsvpWhatsApp} target="_blank" rel="noreferrer">
+                      Confirmar por WhatsApp
+                    </a>
+                  </Button>
+                  <Button variant="outline" asChild className="rounded-xl">
+                    <a href={`tel:+${rsvpPhone}`}>
+                      Llamar para confirmar
+                    </a>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Pie de página */}
+              <div className="text-center text-sm text-gray-500">
+                <p>
+                  Con mucho cariño, <span className="font-medium">Samuel & Sandra</span>
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Versión lista para copiar y pegar en WhatsApp */}
+        <div className="mt-8 text-gray-700">
+          <h2 className="text-lg font-semibold mb-2">Texto corto para WhatsApp</h2>
+          <div className="rounded-xl border p-4 bg-white">
+            <p>
+              ¡Hola! 🎉 Te invito a celebrar conmigo mi cumpleaños y nuestros <b>2 años de aniversario</b> 💞
+              <br/>
+              <b>📅 Sábado 15 de noviembre – ⏰ 7:00 p.m.</b>
+              <br/>
+              <b>📍 Las mingas 1348 </b>
+              <br/>
+              ¿Me confirmas tu asistencia? Gracias 🙏✨
+              <br/>
+              — Sandra
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
